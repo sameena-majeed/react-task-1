@@ -2,21 +2,22 @@ import reportWebVitals from './reportWebVitals';
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createStoreHook, Provider } from 'react-redux';
+import { createStoreHook } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
+import { Provider } from 'react-redux';
 
 import App from "./App";
-import userDetailsReducers from './redux/reducers/userDetailsReducer';
+import userDetailsReducer from './redux/reducers/userDetailsReducer';
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
-const store = createStoreHook(userDetailsReducers, composeWithDevTools());
+const store = createStoreHook(userDetailsReducer, composeWithDevTools());
+console.log("store: " )
 root.render(
-    // <Provider store={store}>
+    // <Provider store={store} key="provider">
     <App />
-    // </Provider>,
+//  </Provider>,
 
 );
 

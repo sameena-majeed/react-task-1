@@ -19,8 +19,24 @@
    margin-top: 30px;
  }
 
- .signIn-label{
-   margin-bottom: 50px;
+ .offScreen{
+   display: none;
+ }
+
+ .emailInstructions,
+ .passwordInstructions,
+ .confirmPasswordInstructions{
+   margin-top: 1px;
+   border: solid red 2px;
+   color: red;
+   font-size: small;
+ }
+
+ 
+
+ .signIn-label,
+ .register-label{
+   margin-bottom: 40px;
  }
 
  .newUser{
