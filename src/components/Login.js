@@ -19,13 +19,17 @@ const Login = () => {
         emailRef.current.focus();
     },[])
 
+    // const submitHandler = () => {
+
+    // }
+
    console.log({email})
     return (
         <>        
 
 
             <p ref={errorRef} className={errorMessage ? "errorMessage": "offScreen"}>{errorMessage}</p>
-            <form className="form">
+            <form className="form" >
                 <h3 className="signIn-label" >Sign In</h3>
                 <div className="form-group">
                     <label>Email address</label>
@@ -57,7 +61,7 @@ const Login = () => {
                 <button type="submit" className="btn btn-danger btn-block submit-btn">Submit</button>
                 <br/>
                 <Link to="/register" className='newUser' >New User?</Link>
-                {/* <Nav.Link href="/login">Log In</Nav.Link> */}
+               
             </form>
         </>
     )

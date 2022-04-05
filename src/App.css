@@ -32,7 +32,11 @@
    font-size: small;
  }
 
- 
+ .home{
+  display: flex;
+  align-items:center;
+  justify-content: center;
+ }
 
  .signIn-label,
  .register-label{

@@ -58,6 +58,10 @@ const Register = () => {
         }
 
     }
+
+    
+    // const dispatch = useDispatch();
+
     const [state, dispatch] = useReducer(reducer, initialValues)
 
     useEffect(() => {

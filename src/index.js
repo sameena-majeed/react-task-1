@@ -1,22 +1,18 @@
+
 import reportWebVitals from './reportWebVitals';
-
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createStoreHook, Provider } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-
 
 import App from "./App";
-import userDetailsReducers from './redux/reducers/userDetailsReducer';
+
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
-const store = createStoreHook(userDetailsReducers, composeWithDevTools());
+
 root.render(
-    // <Provider store={store}>
+   
     <App />
-    // </Provider>,
+
 
 );
 
