@@ -1,15 +1,20 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../features/userSlice'
+import { Redirect } from "react-router-dom";
 import '../App.css';
+
 const Login = () => {
     const emailRef = useRef();
     const errorRef = useRef();
 
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [isSuccess, setIsSuccess] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false); 
+
+    const dispatch = useDispatch();
 
     useEffect( () => {
         setErrorMessage("");
@@ -19,17 +24,26 @@ const Login = () => {
         emailRef.current.focus();
     },[])
 
-    // const submitHandler = () => {
+    const submitHandler = (e) => {
+        e.preventDefault();
 
-    // }
+        dispatch(login({
+            email : email,
+            password: password,
+            loggedIn: true
+        }));
+        setIsSuccess(true);
 
-   console.log({email})
+    }
+
+    if (isSuccess) {
+        return <Redirect to="/home" />;
+      }
+
     return (
         <>        
-
-
             <p ref={errorRef} className={errorMessage ? "errorMessage": "offScreen"}>{errorMessage}</p>
-            <form className="form" >
+            <form className="form" onSubmit={ submitHandler } >
                 <h3 className="signIn-label" >Sign In</h3>
                 <div className="form-group">
                     <label>Email address</label>

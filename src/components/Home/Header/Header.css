@@ -1,0 +1,18 @@
+.headerTitle{
+    font-size: 12vh;
+}
+
+.header{
+    display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 35vh;
+  width: 100%;
+   }
+
+.inputs{
+    width: 100%;
+  display: flex;
+  justify-content: space-around;
+}

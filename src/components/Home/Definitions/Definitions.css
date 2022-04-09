@@ -1,0 +1,40 @@
+.subTitle{
+    font-size: 2vh;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.meanings{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border: black solid 2px;
+   max-width: 60%;
+  background: white;
+   font-size: smaller;
+   overflow: scroll;
+   scrollbar-width: thin;
+   max-height: 20rem;
+   position: relative;
+    
+}
+
+.audioPlayer{
+    background-color: black;
+     border-radius: 10;
+     /* position: relative; */
+     width: 100%;
+     height: 40px;
+     margin-bottom: 4px;
+     object-fit: inherit;
+}
+
+.solidHR{
+    border-top: 3px solid #bbb;
+}
+
+.singleMeaning{
+    color: rgb(19, 12, 12);
+    font-weight: bold;
+
+}

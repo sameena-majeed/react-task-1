@@ -1,27 +1,16 @@
 import React, { useEffect, useRef, useState, useReducer } from 'react'
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import '../App.css';
-// import axios from '../api/axios';
-// import axios from 'axios';
-
-// import { useSelector } from 'react-redux';
-
-// import { useDispatch } from 'react-redux';
+import { register } from '../features/userSlice' 
 
 const EMAIL_FORMAT = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
 const PASSWORD_FORMAT = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,24}$/;
-// const REGISTER_URL = 'https://jsonplaceholder.typicode.com/users';
+
 const Register = () => {
-
-    
-
-    // const userDetails = useSelector( state => state);
-
     const errorRef = useRef();
     const emailRef = useRef();
-
     const [errorMessage, setErrorMessage] = useState("");
-
 
     const [email, setEmail] = useState('');
     const [isValidEmail, setIsValidEmail] = useState('false');
@@ -34,36 +23,13 @@ const Register = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [isValidCPassword, setIsValidCPassword] = useState('false');
     const [focusCPassword, setFocusCPassword] = useState('false');
-
     const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
-    const initialValues = {
-        email : {
-            value: ''
-        },
-        password: {
-            value: ''
-        },
-    }
-    
-    const reducer = (state,  action) => {
-        switch(action.type) {
-            case 'FORM_SUBMISSION':
-                return { ...state, 
-                email: action.payload.email,
-                password: action.payload.password
-                } ;
-            default:
-                return state;
-        }
-
-    }
-    const [state, dispatch] = useReducer(reducer, initialValues)
+    const dispatch = useDispatch();
 
     useEffect(() => {
         emailRef.current.focus();
     }, [])
-
 
     useEffect(() => {
         const result = EMAIL_FORMAT.test(email);
@@ -71,7 +37,6 @@ const Register = () => {
         console.log("email : " + email);
         setIsValidEmail(result);
     }, [email]);
-
 
     useEffect(() => {
         const result = PASSWORD_FORMAT.test(password);
@@ -102,15 +67,13 @@ const Register = () => {
      
             const userDetails = {
                 email,
-                password
+                password,
+                loggedIn: false,
             }
 
             console.log("userDetails");
             console.log(userDetails);
-            dispatch({ type: "FORM_SUBMISSION", userDetails});
-
-           console.log("state:")
-           console.log(state);
+            dispatch(register(userDetails));
             setRegistrationSuccess(true);
             setEmail('');
             setPassword('');
@@ -124,11 +87,7 @@ const Register = () => {
                 setErrorMessage("Registration failed!");
             }
             errorRef.current.focus();
-
         }
-
-
-
     }
 
     return (
@@ -173,8 +132,7 @@ const Register = () => {
                                 className="form-control"
                                 placeholder="Enter password"
                                 onChange={(e) => setPassword(e.target.value)}
-                                 area-invalid={isValidPassword ? "false" : "true"}
-                               
+                                 area-invalid={isValidPassword ? "false" : "true"}               
                                 onFocus={() => setFocusPassword(true)}
                                 onBlur={() => setFocusPassword(false)}
                                 required
@@ -212,12 +170,9 @@ const Register = () => {
                         </button>
                         <br />
                         <Link to="/login" className='newUser' >Already a member?</Link>
-
                     </form>
                 </section>
             }
-
-
         </>
     )
 }
